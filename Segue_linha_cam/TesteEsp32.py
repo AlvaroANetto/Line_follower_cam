@@ -1,14 +1,13 @@
-from machine import Pin
-import time
+import random
+erro= random.randint(0, 100) - 50
+integral = erro
+integral = integral + erro
+ultimo_erro = erro
+derivada = erro - ultimo_erro
+kd = derivada * 1
+kp = erro * 0.3
+ki = integral * 0.006
 
-# Configura o pino do LED integrado (normalmente GPIO2 na maioria das placas ESP32)
-led = Pin(2, Pin.OUT)
-
-# Liga o LED
-led.value(1)
-
-# Mantém o LED ligado por 5 segundos
-time.sleep(5)
-
-# Desliga o LED
-led.value(0)
+for i in range(0, 10):
+    erro = random.randint(0, 100) - 50
+    print(kd, "|", kp, "|", ki)

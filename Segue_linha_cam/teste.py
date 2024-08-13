@@ -107,10 +107,18 @@ while True:
             cv2.putText(frame, f"Detectado Vert. {i + 1}", (25 + (i * 200), height - 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             color = (0, 255, 255)  # Ciano
             frame = cv2.line(frame, (linha_x, roi_top), (linha_x, roi_bottom), color, grossura_linha_vertical - 5)
+    erro= mean_pixel_value_vertical
+    integral = erro
+    integral = integral + erro
+    ultimo_erro = erro
+    derivada = erro - ultimo_erro
+    kd = derivada * 1
+    kp = erro * 0.3
+    ki = integral * 0.006
 
     # Exibe os valores médios dos ROIs no console
     print(", ".join(output_rois_horizontal), ", ".join(output_rois_vertical))
-    
+    #print(kd, "|", kp, "|", ki)
 
     # Exibe a imagem com as anotações
     cv2.imshow("Imagem", frame)
