@@ -119,7 +119,7 @@ def main():
     scale = 4
 
     try:
-        webCam = cv2.VideoCapture(1)
+        webCam = cv2.VideoCapture(0)
         if not webCam.isOpened():
             raise Exception("Could not open webcam.")
 

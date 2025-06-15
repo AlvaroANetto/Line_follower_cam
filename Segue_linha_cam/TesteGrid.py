@@ -1,7 +1,7 @@
 import cv2 
 import numpy as np
 
-webcam = cv2.VideoCapture(1) #qual camera usar
+webcam = cv2.VideoCapture(0) #qual camera usar
 width = int(webcam.get(cv2.CAP_PROP_FRAME_WIDTH))   #pega a largura
 height = int(webcam.get(cv2.CAP_PROP_FRAME_HEIGHT)) #pega a altura
 

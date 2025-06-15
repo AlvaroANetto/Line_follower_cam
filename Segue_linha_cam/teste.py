@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Abre a câmera
-webcam = cv2.VideoCapture(1)  # Qual câmera usar
+webcam = cv2.VideoCapture(0)  # Qual câmera usar
 if not webcam.isOpened():
     print("Erro ao abrir a câmera.")
     exit()
@@ -26,7 +26,7 @@ grossura_linha_vertical = 10
 linha_largura_vertical = linha_bottom - linha_top
 
 # Número de regiões de interesse para a linha horizontal
-num_rois_horizontal = 3
+num_rois_horizontal = 5
 roi_fraction_horizontal = 1.0 / num_rois_horizontal
 roi_width_horizontal = int(linha_largura * roi_fraction_horizontal)
 roi_posicoes_horizontal = [linha_inicial + int(i * roi_width_horizontal) for i in range(num_rois_horizontal)]
@@ -97,7 +97,7 @@ while True:
         roi_vertical = filmagem_cinza[roi_top:roi_bottom, roi_left:roi_right]
         mean_pixel_value_vertical = np.mean(roi_vertical)
 
-        threshold = 150
+        threshold = 120
         status_vertical = mean_pixel_value_vertical < threshold
 
         statuses_vertical.append(status_vertical)
