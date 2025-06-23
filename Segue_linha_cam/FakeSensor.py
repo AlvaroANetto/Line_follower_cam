@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 # Abre a câmera
 webcam = cv2.VideoCapture(0)
@@ -31,6 +32,7 @@ ki_gain = 0.006
 kd_gain = 1
 
 while True:
+    start_time = time.time()
     ret, frame = webcam.read()
     if not ret:
         print("Erro ao capturar a imagem.")
@@ -87,7 +89,10 @@ while True:
 
     pid_saida = kp + ki + kd
 
-    print(f"Erro: {erro:.2f} | PID: {pid_saida:.2f} (Kp:{kp:.2f}, Ki:{ki:.2f}, Kd:{kd:.2f})")
+    #print(f"Erro: {erro:.2f} | PID: {pid_saida:.2f} (Kp:{kp:.2f}, Ki:{ki:.2f}, Kd:{kd:.2f})")
+    end_time = time.time()
+    elapsed_time = (end_time - start_time) * 1000  
+    print(f"Tempo por frame: {elapsed_time:.2f} ms")
 
     cv2.imshow("Imagem", frame)
 
